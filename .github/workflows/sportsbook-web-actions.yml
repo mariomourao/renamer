@@ -10,5 +10,21 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
+  package-image:
+    name: Docker Image
+    runs-on: [self-hosted, Linux]
+    needs: [build]
+    env:
+      DOCKER_REPOSITORY: adt-docker-dev-orl.repo.orl.eng.hitachivantara.com
+      DOCKER_IMAGE: asset-avatar/operator
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Get Version
+        id: get-version
+        run: echo "::set-output name=version::$(cat version.txt)-${GITHUB_REF#refs/heads/}.${GITHUB_SHA::7}"
+ 
 
       
