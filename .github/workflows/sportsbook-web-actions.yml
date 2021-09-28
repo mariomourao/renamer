@@ -11,7 +11,7 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
   package-image:
-    name: Docker Image
+    name: Docker Image1
     runs-on: [self-hosted, Linux]
     env:
       DOCKER_REPOSITORY: adt-docker-dev-orl.repo.orl.eng.hitachivantara.com
