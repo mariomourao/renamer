@@ -13,7 +13,6 @@ jobs:
   package-image:
     name: Docker Image
     runs-on: [self-hosted, Linux]
-    needs: [build]
     env:
       DOCKER_REPOSITORY: adt-docker-dev-orl.repo.orl.eng.hitachivantara.com
       DOCKER_IMAGE: asset-avatar/operator
